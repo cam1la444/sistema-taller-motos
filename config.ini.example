@@ -1,0 +1,7 @@
+; Copie este archivo como config.ini y ponga SUS datos. config.ini NO se sube a GitHub.
+[sqlserver]
+driver = ODBC Driver 18 for SQL Server
+servidor = nombre tal cual de su servidor || este comando les puede ayudar a saber el servidor: SELECT @@SERVERNAME AS servidor;
+base = Taller
+usuario = 
+clave = 
