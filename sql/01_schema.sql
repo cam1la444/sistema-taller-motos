@@ -4,13 +4,13 @@
 -- DESCRIPCIÓN: Estructura de base de datos adaptada a la división de trabajo
 -- ============================================================================
 
-IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'TallerGestion')
+IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'Taller')
 BEGIN
-    CREATE DATABASE TallerGestion;
+    CREATE DATABASE Taller;
 END;
 GO
 
-USE TallerGestion;
+USE Taller;
 GO
 
 -- ----------------------------------------------------------------------------
@@ -220,10 +220,10 @@ BEGIN
     SET NOCOUNT ON;
 
     UPDATE I
-    SET I.Stock = I.Stock - i.Cantidad
+    SET I.Stock = I.Stock - o.Cantidad
     FROM Insumos I
-    INNER JOIN inserted i ON I.InsumoID = i.InsumoID
-    WHERE i.TipoItem = 'Insumo';
+    INNER JOIN inserted o ON I.InsumoID = o.InsumoID
+    WHERE o.TipoItem = 'Insumo';
 END;
 GO
 
@@ -238,10 +238,10 @@ BEGIN
     SET NOCOUNT ON;
 
     UPDATE I
-    SET I.Stock = I.Stock + i.Cantidad,
-        I.Costo = i.CostoUnitario
+    SET I.Stock = I.Stock + o.Cantidad,
+        I.Costo = o.CostoUnitario
     FROM Insumos I
-    INNER JOIN inserted i ON I.InsumoID = i.InsumoID;
+    INNER JOIN inserted o ON I.InsumoID = o.InsumoID;
 END;
 GO
 
