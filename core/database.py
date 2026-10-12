@@ -16,9 +16,9 @@ def _cadena_conexion():
     s = cfg["sqlserver"]
     cadena = (f"DRIVER={{{s['driver']}}};SERVER={s['servidor']};DATABASE={s['base']};"
               "TrustServerCertificate=yes")
-    if s.get("usuario", "").strip():
-        clave = s["clave"].replace("}", "}}")      # las llaves protegen claves con ; o }
-        return cadena + f";UID={s['usuario']};PWD={{{clave}}}"
+    if s.get("NombreUsuario", "").strip():
+        clave = s["Clave"].replace("}", "}}")      # las llaves protegen claves con ; o }
+        return cadena + f";UID={s['NombreUsuario']};PWD={{{clave}}}"
     return cadena + ";Trusted_Connection=yes"
 
 def get_connection():

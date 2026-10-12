@@ -25,4 +25,4 @@ def tiene_acceso(clave_modulo):
     """True si el rol del usuario actual puede abrir ese módulo."""
     if usuario_actual is None:
         return False
-    return clave_modulo in PERMISOS.get(usuario_actual["rol"], [])
+    return clave_modulo in PERMISOS.get(usuario_actual["Rol"], [])

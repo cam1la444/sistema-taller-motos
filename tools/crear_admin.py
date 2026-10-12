@@ -5,10 +5,10 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import bcrypt
 from core.database import consultar, ejecutar
 
-if consultar("SELECT 1 AS x FROM Usuarios WHERE usuario = 'admin'"):
+if consultar("SELECT 1 AS x FROM Usuarios WHERE NombreUsuario = 'admin'"):
     print("El usuario admin ya existe.")
 else:
     hash_ = bcrypt.hashpw(b"admin123", bcrypt.gensalt()).decode()
-    ejecutar("INSERT INTO Usuarios (usuario, nombre, password_hash, rol) VALUES (?,?,?,?)",
+    ejecutar("INSERT INTO Usuarios (NombreUsuario, NombreCompleto, PasswordHash, Rol) VALUES (?,?,?,?)",
              ("admin", "Administrador", hash_, "Administrador"))
     print("Listo: usuario admin / clave admin123 (cámbiela después).")

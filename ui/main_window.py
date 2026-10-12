@@ -15,7 +15,7 @@ class InicioFrame(ttk.Frame):
     def __init__(self, master):
         super().__init__(master, padding=20)
         ttk.Label(self, text="Inicio", font=("", 20, "bold")).pack(anchor="w")
-        ttk.Label(self, text=f"Bienvenido, {session.usuario_actual['nombre']}").pack(anchor="w", pady=10)
+        ttk.Label(self, text=f"Bienvenido, {session.usuario_actual['NombreCompleto']}").pack(anchor="w", pady=10)
         # TODO (A): tarjetas con ventas de hoy, transacciones y stock bajo
 
     def al_mostrar(self):
@@ -46,7 +46,7 @@ class MainWindow(ttk.Frame):
         menu.pack(side="left", fill="y")
         ttk.Label(menu, text="Taller Pro", font=("", 16, "bold"), bootstyle="inverse-secondary").pack(pady=(0, 4))
         u = session.usuario_actual
-        ttk.Label(menu, text=f"{u['nombre']}\n{u['rol']}", bootstyle="inverse-secondary").pack(pady=(0, 16))
+        ttk.Label(menu, text=f"{u['NombreCompleto']}\n{u['Rol']}", bootstyle="inverse-secondary").pack(pady=(0, 16))
 
         for clave, texto, clase in MODULOS:
             if session.tiene_acceso(clave):          # el rol decide qué botones existen
